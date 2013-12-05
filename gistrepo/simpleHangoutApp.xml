@@ -48,7 +48,7 @@
 }</div>
 
 
-<script src="//bitbucket.org/ispartan/gistrepo/raw/117707087dc41647e8bd31fa0932a649135497ae/assets/lib/jquery/jquery.min.js"></script>
+<script src="//rawgithub.com/nikhil-venkat/HangoutApp/master/gistrepo/assets/lib/jquery/jquery.min.js"></script>
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 <!--script src="//d137jyf8bmrjar.cloudfront.net/__assets__/lib/ace-min-noconflict/ace.js"></script>
 <script src="//d137jyf8bmrjar.cloudfront.net/__assets__/lib/ace-min-noconflict/worker-javascript.js"></script>
@@ -58,17 +58,17 @@
 <script src="//cdn.firebase.com/v0/firebase.js"></script>
 
 <!-- Include ACE and its JavaScript mode and theme files -->
-<script src="//bitbucket.org/ispartan/gistrepo/raw/117707087dc41647e8bd31fa0932a649135497ae/assets/lib/ace/ace.js"></script>
-<script src="//bitbucket.org/ispartan/gistrepo/raw/117707087dc41647e8bd31fa0932a649135497ae/assets/lib/ace/mode-javascript.js"></script>
-<script src="//bitbucket.org/ispartan/gistrepo/raw/117707087dc41647e8bd31fa0932a649135497ae/assets/lib/ace/theme-textmate.js"></script>
+<script src="//rawgithub.com/nikhil-venkat/HangoutApp/master/gistrepo/assets/lib/ace/ace.js"></script>
+<script src="//rawgithub.com/nikhil-venkat/HangoutApp/master/gistrepo/assets/lib/ace/mode-javascript.js"></script>
+<script src="//rawgithub.com/nikhil-venkat/HangoutApp/master/gistrepo/assets/lib/ace/theme-textmate.js"></script>
 
 <!-- Include Firepad -->
-<script src="bitbucket.org/ispartan/gistrepo/raw/117707087dc41647e8bd31fa0932a649135497ae/assets/lib/firepad/js/firepad.js"></script>
-<link rel="stylesheet" href="//bitbucket.org/ispartan/gistrepo/raw/117707087dc41647e8bd31fa0932a649135497ae/assets/lib/firepad/css/firepad.css" />
+<script src="//rawgithub.com/nikhil-venkat/HangoutApp/master/gistrepo/assets/lib/firepad/js/firepad.js"></script>
+<link rel="stylesheet" href="//rawgithub.com/nikhil-venkat/HangoutApp/master/gistrepo/assets/lib/firepad/css/firepad.css" />
 
 <!-- Helper for generating URLs / Firebase references for example purposes.
        Not necessary in production apps. -->
-<script src="//bitbucket.org/ispartan/gistrepo/raw/117707087dc41647e8bd31fa0932a649135497ae/assets/lib/firepad/js/example-helper.js"></script>
+<script src="//rawgithub.com/nikhil-venkat/HangoutApp/master/gistrepo/assets/lib/firepad/js/example-helper.js"></script>
 
 <style>
     html { height: 100%; }
