@@ -90,6 +90,7 @@
     onClick="showParticipants()"/>
 </p>
 <script>
+  console.log("1");
 function showParticipants() {
   var participants = gapi.hangout.getParticipants();
 
@@ -145,11 +146,13 @@ function renderEditor(){
       }
     });
 }
+console.log("before init");
 function init() {
   // When API is ready...                                                         
   gapi.hangout.onApiReady.add(
       function(eventObj) {
-      console.log(renderEditor());
+      console.log("2");
+      renderEditor();
       //VA: don't do anything right now.
         return;
         if (eventObj.isApiReady) {
@@ -162,6 +165,7 @@ function init() {
 
 // Wait for gadget to load.                                                       
 gadgets.util.registerOnLoadHandler(init);
+console.log("after gadget initialization");
 </script>
 </body>
 ]]>
