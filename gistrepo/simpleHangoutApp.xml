@@ -41,13 +41,6 @@
 -->
 </style>
 <body>
-
-<div id="editor">function foo(items) {
-    var x = "All this is syntax highlighted";
-    return x;
-}</div>
-
-
 <script src="//rawgithub.com/nikhil-venkat/HangoutApp/master/gistrepo/assets/lib/jquery/jquery.min.js"></script>
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 <!--script src="//d137jyf8bmrjar.cloudfront.net/__assets__/lib/ace-min-noconflict/ace.js"></script>
@@ -109,7 +102,6 @@
     onClick="showParticipants()"/>
 </p>
 <script>
-  console.log("1");
 function showParticipants() {
   var participants = gapi.hangout.getParticipants();
 
@@ -139,11 +131,7 @@ function renderEditor(){
 
 
   //// Initialize Firebase.
-    console.log('hello');
     var firepadRef = getExampleRef();
-    console.log("*****")
-    console.log(firepadRef);
-    console.log("*****")
     // TODO: Replace above line with:
     // var ref = new Firebase('<YOUR FIREBASE URL>');
 
@@ -165,12 +153,10 @@ function renderEditor(){
       }
     });
 }
-console.log("before init");
 function init() {
   // When API is ready...                                                         
   gapi.hangout.onApiReady.add(
       function(eventObj) {
-      console.log("2");
       renderEditor();
       //VA: don't do anything right now.
         return;
@@ -184,7 +170,6 @@ function init() {
 
 // Wait for gadget to load.                                                       
 gadgets.util.registerOnLoadHandler(init);
-console.log("after gadget initialization");
 </script>
 </body>
 ]]>
