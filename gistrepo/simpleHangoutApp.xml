@@ -68,7 +68,27 @@
 
 <!-- Helper for generating URLs / Firebase references for example purposes.
        Not necessary in production apps. -->
-<script src="//rawgithub.com/nikhil-venkat/HangoutApp/master/gistrepo/assets/lib/firepad/js/example-helper.js"></script>
+<!-- <script src="//rawgithub.com/nikhil-venkat/HangoutApp/master/gistrepo/assets/lib/firepad/js/example-helper.js"></script> -->
+<script>
+  function getExampleRef() {
+    // Get hash from end of URL or generate a random one.
+
+    var ref = new Firebase('https://firepad.firebaseio-demo.com');
+    debugger;
+    var hash = window.location.hash.replace(/#/g, '');
+    if (hash) {
+      ref = ref.child(hash);
+    } else {
+      ref = ref.push(); // generate unique location.
+      window.location = window.location + '#' + ref.name(); // add it as a hash to the URL.
+    }
+
+    if (typeof console !== 'undefined')
+      console.log('Firebase data: ', ref.toString());
+
+    return ref;
+  }
+  </script>
 
 <style>
     html { height: 100%; }
