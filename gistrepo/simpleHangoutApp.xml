@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+<!-- Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *      
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License
+-->
+        <ModulePrefs title="Hangout Starter">
+                <Require feature="rpc" />
+                <Require feature="views" />
+                <Require feature="locked-domain" />
+        </ModulePrefs>
+        <Content type="html"><![CDATA[     
+
+<html>
+<style type="text/css">
+  #editor{
+    height: 500px;
+  }
+
+<!--
+.button {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
+  background: -moz-linear-gradient(top, #fff, #ddd);  
+  border: 1px solid #bbb;
+}
+
+.button:active {
+        background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#333)); 
+        background: -moz-linear-gradient(bottom, #ddd, #aaa); }
+
+-->
+</style>
+<body>
+
+<div id="editor">function foo(items) {
+    var x = "All this is syntax highlighted";
+    return x;
+}</div>
+
+
+<script src="//bitbucket.org/ispartan/gistrepo/raw/117707087dc41647e8bd31fa0932a649135497ae/assets/lib/jquery/jquery.min.js"></script>
+<script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
+<!--script src="//d137jyf8bmrjar.cloudfront.net/__assets__/lib/ace-min-noconflict/ace.js"></script>
+<script src="//d137jyf8bmrjar.cloudfront.net/__assets__/lib/ace-min-noconflict/worker-javascript.js"></script>
+<script src="//d137jyf8bmrjar.cloudfront.net/__assets__/lib/ace-min-noconflict/theme-monokai.js"></script-->
+<!--firebase related stuff-->
+<!-- Include Firebase -->
+<script src="//cdn.firebase.com/v0/firebase.js"></script>
+
+<!-- Include ACE and its JavaScript mode and theme files -->
+<script src="//bitbucket.org/ispartan/gistrepo/raw/117707087dc41647e8bd31fa0932a649135497ae/assets/lib/ace/ace.js"></script>
+<script src="//bitbucket.org/ispartan/gistrepo/raw/117707087dc41647e8bd31fa0932a649135497ae/assets/lib/ace/mode-javascript.js"></script>
+<script src="//bitbucket.org/ispartan/gistrepo/raw/117707087dc41647e8bd31fa0932a649135497ae/assets/lib/ace/theme-textmate.js"></script>
+
+<!-- Include Firepad -->
+<script src="bitbucket.org/ispartan/gistrepo/raw/117707087dc41647e8bd31fa0932a649135497ae/assets/lib/firepad/js/firepad.js"></script>
+<link rel="stylesheet" href="//bitbucket.org/ispartan/gistrepo/raw/117707087dc41647e8bd31fa0932a649135497ae/assets/lib/firepad/css/firepad.css" />
+
+<!-- Helper for generating URLs / Firebase references for example purposes.
+       Not necessary in production apps. -->
+<script src="//bitbucket.org/ispartan/gistrepo/raw/117707087dc41647e8bd31fa0932a649135497ae/assets/lib/firepad/js/example-helper.js"></script>
+
+<style>
+    html { height: 100%; }
+    body { margin: 0; height: 100%; position: relative; }
+    /* Height / width / positioning can be customized for your use case.
+       For demo purposes, we make firepad fill the entire browser. */
+    #firepad-container {
+      position: absolute; left: 0; top: 0; bottom: 0; right: 0;
+    }
+</style>
+
+
+<h3>Simple Hangout App</h3>
+<div id="firepad-container"></div>
+
+<p>
+<input class="button" type="button" value="Show participants!" id="showParticipants" 
+    style="visibility:hidden;"
+    onClick="showParticipants()"/>
+</p>
+<script>
+function showParticipants() {
+  var participants = gapi.hangout.getParticipants();
+
+  var retVal = '<p>Participants: </p><ul>';
+
+  for (var index in participants) {
+    var participant = participants[index];
+
+    if (!participant.person) {
+      retVal += '<li>A participant not running this app</li>';
+    }
+    retVal += '<li>' + participant.person.displayName + '</li>';
+  }
+
+  retVal += '</ul>';
+
+  var div = document.getElementById('participantsDiv');
+
+  div.innerHTML = retVal;
+}
+
+function renderEditor(){
+  //var editor = ace.edit("editor");
+  //console.log(editor)
+  //editor.setTheme("ace/theme/monokai");
+  //editor.getSession().setMode("ace/mode/javascript");
+
+
+  //// Initialize Firebase.
+    var firepadRef = getExampleRef();
+    // TODO: Replace above line with:
+    // var ref = new Firebase('<YOUR FIREBASE URL>');
+
+    //// Create ACE
+    var editor = ace.edit("firepad-container");
+    //editor.setTheme("ace/theme/textmate");
+    var session = editor.getSession();
+    session.setUseWrapMode(true);
+    session.setUseWorker(false);
+    //session.setMode("ace/mode/javascript");
+
+    //// Create Firepad.
+    var firepad = Firepad.fromACE(firepadRef, editor);
+    
+    //// Initialize contents.
+    firepad.on('ready', function() {
+      if (firepad.isHistoryEmpty()) {
+        firepad.setText('// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}');
+      }
+    });
+}
+function init() {
+  // When API is ready...                                                         
+  gapi.hangout.onApiReady.add(
+      function(eventObj) {
+      console.log(renderEditor());
+      //VA: don't do anything right now.
+        return;
+        if (eventObj.isApiReady) {
+          document.getElementById('showParticipants')
+            .style.visibility = 'visible';
+        }
+        
+      });
+}
+
+// Wait for gadget to load.                                                       
+gadgets.util.registerOnLoadHandler(init);
+</script>
+</body>
+]]>
+</Content>
+</Module>
