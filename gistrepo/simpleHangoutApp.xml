@@ -120,7 +120,9 @@ function renderEditor(){
 
   //// Initialize Firebase.
     var firepadRef = getExampleRef();
+    console.log("*****")
     console.log(firepadRef);
+    console.log("*****")
     // TODO: Replace above line with:
     // var ref = new Firebase('<YOUR FIREBASE URL>');
 
