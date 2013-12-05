@@ -119,6 +119,7 @@ function renderEditor(){
 
 
   //// Initialize Firebase.
+    console.log('hello');
     var firepadRef = getExampleRef();
     console.log("*****")
     console.log(firepadRef);
