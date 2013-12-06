@@ -214,7 +214,6 @@ var pollServer = function() {
     var url = 'https://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID; 
     $.ajax({
         url: url,
-        dataType: 'jsonp',
         success: function(response){
             console.log(response);
         }
