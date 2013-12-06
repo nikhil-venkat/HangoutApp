@@ -211,6 +211,7 @@ var pollServer = function() {
     var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/'+hangoutID;
     $.getJSON( url, function( data ) {
         console.log(data);
+        var ref = new Firebase('https://nikhil-venkat.firebaseio.com');
         Firepad.fromACE(ref, ace)
     })
 };
