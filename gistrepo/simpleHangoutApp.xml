@@ -193,9 +193,7 @@ var newBroadcast = function() {
 
     var hangoutID = gapi.hangout.getHangoutId();
     var firebaseID = ref.push();
-    var url = 'https://api.mongolab.com/api/1/databases/nik_test/collections/test?apiKey=Ty71bCX96vKu8p9bjK2dX2OMqZa2Lk3I';
-
-    var data = 'ho_id=' + hangoutID + '&fb_id=' + firebaseID;
+    var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID + '/' + firebaseID;
 
     $.get( url, data, function( response ) {
         console.log( response );
