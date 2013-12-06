@@ -25,6 +25,40 @@
     height: 500px;
   }
 
+.prompt {
+    background: #FFF;
+    height: 70px;
+    left: 55px;
+    position: absolute;
+    top: 20px;
+    width: 300px;
+    border: solid 1px #000;
+    z-index: 1000;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.prompt p {
+    margin: 0;
+    text-align: center;
+}
+
+#close {
+    background: #000;
+    border: none;
+    border-radius: 50%;
+    color: #FFF;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    padding: 5px 8px 5px;
+    position: absolute;
+    right: -15px;
+    top: -14px;
+}
+
 <!--
 .button {
   border-radius: 3px;
@@ -153,6 +187,39 @@ function renderEditor(){
       }
     });
 }
+
+var newBroadcast = function() {
+    var ref = new Firebase('https://firepad.firebaseio-demo.com');
+
+    var hangoutID = gapi.hangout.getHangoutId();
+    var firebaseID = ref.push();
+    var url = '';
+
+    var data = 'ho_id=' + hangoutID + '&fb_id=' + firebaseID;
+
+    $.POST( url, data, function( response ) {
+        console.log( response );
+    });
+};
+
+var loadScreenSharePrompt = function() {
+    var prompt = '';
+
+    prompt += '<div class="prompt" id="prompt">';
+    prompt += '<p>Click on the screenshare link located on the left to share your screen</p>';
+    prompt += '<button id="close">X</button>'
+    prompt += '</div>';
+
+    $('body').append( prompt );
+    
+    $('#close').on('click', function( event ) {
+        var target = $(event.target);
+        target.parents('#prompt').remove();
+    });
+};
+
+loadScreenSharePrompt();
+
 function init() {
   // When API is ready...                                                         
   gapi.hangout.onApiReady.add(
