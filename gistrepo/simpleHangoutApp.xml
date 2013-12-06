@@ -167,11 +167,11 @@ function renderEditor( fb_id ) {
     var id = '';
 
     if ( fb_id ) {
-        id = fb_id;
+        id = '/firepads/' + fb_id;
     }
 
     //// Initialize Firebase.
-    var ref = new Firebase('https://nikhil-venkat.firebaseio.com/' + id);
+    var ref = new Firebase('https://nikhil-venkat.firebaseio.com' + id);
 
     //// Create ACE
     var editor = ace.edit("firepad-container");
