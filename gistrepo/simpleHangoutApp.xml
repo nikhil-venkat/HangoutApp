@@ -211,7 +211,7 @@ var newBroadcast = function() {
         }
     });
 
-    renderEditor();
+    renderEditor( fb_id );
 };
 
 var pollServer = function() {
