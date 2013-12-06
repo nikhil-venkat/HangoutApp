@@ -208,7 +208,7 @@ var newBroadcast = function() {
 var pollServer = function() {
     var hangoutID = gapi.hangout.getHangoutId();
     var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/'+hangoutID; 
-    $.ajax({
+    /*$.ajax({
         type: 'GET',
         url: url,
         crossDomain: true,
@@ -216,7 +216,10 @@ var pollServer = function() {
         success: function(response){
             console.log(response);
         }
-    });
+    });*/
+    $.getJSON( url, function( data ) {
+        console.log(data);
+    })
 };
 
 
