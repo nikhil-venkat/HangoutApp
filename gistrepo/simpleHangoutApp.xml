@@ -193,8 +193,10 @@ var newBroadcast = function() {
 
     var hangoutID = gapi.hangout.getHangoutId();
     var firebaseID = ref.push();
-    var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID + '/' + firebaseID;
+    console.log( firebaseID );
+    var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID + '/' + encodeURIComponent(firebaseID);
 
+    debugger;
     $.ajax({
         type: 'GET',
         url: url,
