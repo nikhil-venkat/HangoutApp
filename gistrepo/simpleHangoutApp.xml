@@ -210,7 +210,7 @@ var newBroadcast = function() {
 
 var pollServer = function() {
     var hangoutID = gapi.hangout.getHangoutId();
-    var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID; 
+    var url = 'https://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID; 
 
     $.ajax({
       type: 'GET',
