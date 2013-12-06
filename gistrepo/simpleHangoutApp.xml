@@ -182,7 +182,7 @@ function renderEditor( fb_id ) {
     //session.setMode("ace/mode/javascript");
 
     //// Create Firepad.
-    var firepad = Firepad.fromACE(firepadRef, editor);
+    var firepad = Firepad.fromACE(ref, editor);
     
     //// Initialize contents.
     firepad.on('ready', function() {
