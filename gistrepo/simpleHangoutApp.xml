@@ -200,7 +200,7 @@ var newBroadcast = function() {
     debugger;
     var firebaseID = ref.push();
     var fb_id = firebaseID.path.m[0];
-    var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID + '/' + fb_id + ho);
+    var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID + '/' + fb_id + '/' + hangoutURL;
 
     $.ajax({
         type: 'GET',
