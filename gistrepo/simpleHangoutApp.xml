@@ -204,8 +204,25 @@ var newBroadcast = function() {
       success: function( response ) {
           console.log( response );
       }
+
     });
 };
+
+var pollServer = function() {
+    var hangoutID = gapi.hangout.getHangoutId();
+    var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID; 
+
+    $.ajax({
+      type: 'GET',
+      url: url,
+      dataType: 'jsonp',
+      success: function( response ) {
+          console.log( 'poll server response',response);
+      }
+
+    });
+};
+
 
 var loadScreenSharePrompt = function() {
     var prompt = '';
@@ -234,6 +251,7 @@ function init() {
       newBroadcast();
       console.log('after');
 
+      pollServer();
       renderEditor();
       //VA: don't do anything right now.
         return;
