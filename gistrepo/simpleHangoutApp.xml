@@ -195,7 +195,7 @@ var newBroadcast = function() {
     var firebaseID = ref.push();
     var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID + '/' + firebaseID;
 
-    $.get( url, function( response ) {
+    $.getJSON( url, function( response ) {
         console.log( response );
     });
 };
