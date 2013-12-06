@@ -158,17 +158,20 @@ function showParticipants() {
   div.innerHTML = retVal;
 }
 
-function renderEditor(){
+function renderEditor( fb_id ) {
   //var editor = ace.edit("editor");
   //console.log(editor)
   //editor.setTheme("ace/theme/monokai");
   //editor.getSession().setMode("ace/mode/javascript");
 
+    var id = '';
 
-  //// Initialize Firebase.
-    var firepadRef = getExampleRef();
-    // TODO: Replace above line with:
-    // var ref = new Firebase('<YOUR FIREBASE URL>');
+    if ( fb_id ) {
+        id = fb_id;
+    }
+
+    //// Initialize Firebase.
+    var ref = new Firebase('https://nikhil-venkat.firebaseio.com/' + id);
 
     //// Create ACE
     var editor = ace.edit("firepad-container");
@@ -205,6 +208,8 @@ var newBroadcast = function() {
             console.log( response );
         }
     });
+
+    renderEditor();
 };
 
 var pollServer = function() {
@@ -212,8 +217,12 @@ var pollServer = function() {
     var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/'+hangoutID;
     $.getJSON( url, function( data ) {
         console.log(data);
-        var ref = new Firebase('https://nikhil-venkat.firebaseio.com');
-        Firepad.fromACE(ref, ace)
+        // var ref = new Firebase('https://nikhil-venkat.firebaseio.com');
+        // Firepad.fromACE(ref, ace)
+        renderEditor( data.result );
+
+        // Clears our interval now that we have it back
+        clearInterval( checkID );
     })
 };
 
@@ -250,10 +259,9 @@ function init() {
       if ( participant.displayIndex === 0 ) {
           newBroadcast();
       }else{
-        setInterval(pollServer,2000);
+        var checkID = setInterval(pollServer,2000);
       }
       
-      renderEditor();
       //VA: don't do anything right now.
         return;
         if (eventObj.isApiReady) {
