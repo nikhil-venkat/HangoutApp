@@ -197,8 +197,7 @@ var newBroadcast = function() {
 
     var hangoutID = gapi.hangout.getHangoutId();
     var hangoutURL = encodeURIComponent( gapi.hangout.getHangoutUrl() );
-    var appData = gadgets.views.getParams()['appData'];
-    var UID = '12345';
+    var UID = gadgets.views.getParams()['appData'];
     debugger;
     var firebaseID = ref.push();
     var fb_id = firebaseID.path.m[0];
