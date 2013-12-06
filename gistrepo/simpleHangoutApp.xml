@@ -251,7 +251,7 @@ function init() {
       //commenting this out
       //newBroadcast();
       console.log('after');
-      setTimeout(pollServer,2000);
+      setInterval(pollServer,2000);
       renderEditor();
       //VA: don't do anything right now.
         return;
