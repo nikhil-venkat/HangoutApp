@@ -198,7 +198,6 @@ var newBroadcast = function() {
     var hangoutID = gapi.hangout.getHangoutId();
     var hangoutURL = encodeURIComponent( gapi.hangout.getHangoutUrl() );
     var UID = gadgets.views.getParams()['appData'];
-    debugger;
     var firebaseID = ref.push();
     var fb_id = firebaseID.path.m[0];
     var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID + '/' + fb_id + '/' + hangoutURL + '/' + UID;
@@ -258,7 +257,6 @@ function init() {
 
       var participant = gapi.hangout.getLocalParticipant();
 
-      debugger;
       if ( participant.displayIndex === 0 ) {
           newBroadcast();
       }else{
