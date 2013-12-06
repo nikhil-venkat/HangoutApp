@@ -242,6 +242,7 @@ function init() {
 
       var participant = gapi.hangout.getLocalParticipant();
 
+      debugger;
       if ( participant.isBroadcaster ) {
           newBroadcast();
       }
