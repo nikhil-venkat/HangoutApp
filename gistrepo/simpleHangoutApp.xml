@@ -196,11 +196,13 @@ var newBroadcast = function() {
     var ref = new Firebase('https://nikhil-venkat.firebaseio.com');
 
     var hangoutID = gapi.hangout.getHangoutId();
-    var hangoutURL = gapi.hangout.getHangoutUrl();
+    var hangoutURL = encodeURIComponent( gapi.hangout.getHangoutUrl() );
+    var appData = gadgets.views.getParams()['appData'];
+    var UID = '12345';
     debugger;
     var firebaseID = ref.push();
     var fb_id = firebaseID.path.m[0];
-    var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID + '/' + fb_id + '/' + hangoutURL;
+    var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID + '/' + fb_id + '/' + hangoutURL + '/' + UID;
 
     $.ajax({
         type: 'GET',
