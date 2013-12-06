@@ -224,6 +224,9 @@ function init() {
   // When API is ready...                                                         
   gapi.hangout.onApiReady.add(
       function(eventObj) {
+
+      newBroadcast();
+      
       renderEditor();
       //VA: don't do anything right now.
         return;
@@ -232,7 +235,7 @@ function init() {
             .style.visibility = 'visible';
         }
 
-        newBroadcast();
+        
       });
 }
 
