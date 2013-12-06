@@ -225,8 +225,10 @@ function init() {
   gapi.hangout.onApiReady.add(
       function(eventObj) {
 
+      console.log('before');
       newBroadcast();
-      
+      console.log('after');
+
       renderEditor();
       //VA: don't do anything right now.
         return;
