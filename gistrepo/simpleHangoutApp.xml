@@ -207,16 +207,10 @@ var newBroadcast = function() {
 
 var pollServer = function() {
     var hangoutID = gapi.hangout.getHangoutId();
-    var url = 'https://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/'+hangoutID; 
-    $.ajax({
-        type: 'GET',
-        url: url,
-        crossDomain: true,
-        dataType: 'jsonp',
-        success: function(response){
-            console.log(response);
-        }
-    });
+    var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/'+hangoutID;
+    $.getJSON( url, function( data ) {
+        console.log(data);
+    })
 };
 
 
@@ -253,6 +247,10 @@ function init() {
       }
 
       console.log('after');
+      var participants = [];
+      participants = gapi.hangout.getParticipants();
+      console.log(participants);
+      
       setInterval(pollServer,2000);
       renderEditor();
       //VA: don't do anything right now.
