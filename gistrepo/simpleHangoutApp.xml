@@ -248,7 +248,8 @@ function init() {
       function(eventObj) {
 
       console.log('before');
-      newBroadcast();
+      //commenting this out
+      //newBroadcast();
       console.log('after');
 
       pollServer();
