@@ -189,14 +189,13 @@ function renderEditor(){
 }
 
 var newBroadcast = function() {
-    var ref = new Firebase('https://firepad.firebaseio-demo.com');
+    var ref = new Firebase('https://nikhil-venkat.firebaseio.com');
 
     var hangoutID = gapi.hangout.getHangoutId();
     var firebaseID = ref.push();
     var fb_id = firebaseID.path.m[0];
     var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID + '/' + fb_id;
 
-    debugger;
     $.ajax({
         type: 'GET',
         url: url,
@@ -210,9 +209,9 @@ var newBroadcast = function() {
 var pollServer = function() {
     var hangoutID = gapi.hangout.getHangoutId();
     var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/'+hangoutID;
-    debugger;
     $.getJSON( url, function( data ) {
         console.log(data);
+        Firepad.fromACE(ref, ace)
     })
 };
 
