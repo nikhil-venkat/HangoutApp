@@ -245,8 +245,6 @@ var loadScreenSharePrompt = function() {
     });
 };
 
-loadScreenSharePrompt();
-
 function init() {
   // When API is ready...                                                         
   gapi.hangout.onApiReady.add(
