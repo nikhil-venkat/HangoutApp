@@ -213,7 +213,9 @@ var pollServer = function() {
     debugger;
     var url = 'https://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/'+hangoutID; 
     $.ajax({
+        type: 'GET',
         url: url,
+        crossDomain: true,
         dataType: 'jsonp',
         success: function(response){
             console.log(response);
@@ -249,8 +251,7 @@ function init() {
       //commenting this out
       //newBroadcast();
       console.log('after');
-
-      pollServer();
+      setTimeout(pollServer,2000);
       renderEditor();
       //VA: don't do anything right now.
         return;
