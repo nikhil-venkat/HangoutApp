@@ -212,15 +212,12 @@ var pollServer = function() {
     var hangoutID = gapi.hangout.getHangoutId();
     debugger;
     var url = 'https://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID; 
-
     $.ajax({
-      type: 'GET',
-      url: url,
-      dataType: 'jsonp',
-      success: function( response ) {
-          console.log( 'poll server response',response);
-      }
-
+        url: url,
+        dataType: 'jsonp',
+        success: function(response){
+            console.log(response);
+        }
     });
 };
 
