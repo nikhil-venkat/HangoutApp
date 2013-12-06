@@ -197,7 +197,7 @@ var newBroadcast = function() {
 
     var data = 'ho_id=' + hangoutID + '&fb_id=' + firebaseID;
 
-    $.GET( url, data, function( response ) {
+    $.get( url, data, function( response ) {
         console.log( response );
     });
 };
