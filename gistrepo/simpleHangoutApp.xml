@@ -222,7 +222,7 @@ var pollServer = function() {
         renderEditor( data.result );
 
         // Clears our interval now that we have it back
-        clearInterval( checkID );
+        clearInterval( window.checkID );
     })
 };
 
@@ -259,7 +259,7 @@ function init() {
       if ( participant.displayIndex === 0 ) {
           newBroadcast();
       }else{
-        var checkID = setInterval(pollServer,2000);
+        window.checkID = setInterval(pollServer,2000);
       }
       
       //VA: don't do anything right now.
