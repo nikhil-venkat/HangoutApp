@@ -245,14 +245,10 @@ function init() {
       debugger;
       if ( participant.isBroadcaster ) {
           newBroadcast();
+      }else{
+        setInterval(pollServer,2000);
       }
-
-      console.log('after');
-      var participants = [];
-      participants = gapi.hangout.getParticipants();
-      console.log(participants);
       
-      setInterval(pollServer,2000);
       renderEditor();
       //VA: don't do anything right now.
         return;
