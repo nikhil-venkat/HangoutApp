@@ -255,6 +255,8 @@ function init() {
 
       var participant = gapi.hangout.getLocalParticipant();
 
+      gapi.hangout.setWillAutoLoad(true);
+
       if ( participant.displayIndex === 0 ) {
           newBroadcast();
       }else{
