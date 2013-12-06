@@ -231,7 +231,8 @@ function init() {
           document.getElementById('showParticipants')
             .style.visibility = 'visible';
         }
-        
+
+        newBroadcast();
       });
 }
 
