@@ -245,7 +245,13 @@ function init() {
 
       console.log('before');
       //commenting this out
-      //newBroadcast();
+
+      var participant = gapi.hangout.getLocalParticipant();
+
+      if ( participant.isBroadcaster ) {
+          newBroadcast();
+      }
+
       console.log('after');
       setInterval(pollServer,2000);
       renderEditor();
