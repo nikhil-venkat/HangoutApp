@@ -200,7 +200,7 @@ var newBroadcast = function() {
     var UID = gadgets.views.getParams()['appData'];
     var firebaseID = ref.push();
     var fb_id = firebaseID.path.m[0];
-    var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID + '/' + fb_id + '/' + hangoutURL + '/' + UID;
+    var url = 'http://ec2-54-214-76-68.us-west-2.compute.amazonaws.com:3000/broadcasts/' + hangoutID + '/' + fb_id + '/' + hangoutURL + '/' + UID;
 
     $.ajax({
         type: 'GET',
@@ -216,7 +216,7 @@ var newBroadcast = function() {
 
 var pollServer = function() {
     var hangoutID = gapi.hangout.getHangoutId();
-    var url = 'http://ec2-54-203-38-111.us-west-2.compute.amazonaws.com:3000/broadcasts/'+hangoutID;
+    var url = 'http://ec2-54-214-76-68.us-west-2.compute.amazonaws.com:3000/broadcasts/'+hangoutID;
     $.getJSON( url, function( data ) {
         console.log(data);
         // var ref = new Firebase('https://nikhil-venkat.firebaseio.com');
